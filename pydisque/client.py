@@ -252,11 +252,11 @@ class Client(object):
             return []
 
         if withcounters:
-            return [(job_id, queue_name, job, nacks, additional_deliveries) for
-                    job_id, queue_name, job, _, nacks, _, additional_deliveries in results]
+            return [(queue_name, job_id, job, nacks, additional_deliveries) for
+                    queue_name, job_id, job, _, nacks, _, additional_deliveries in results]
         else:
-            return [(job_id, queue_name, job) for
-                    job_id, queue_name, job in results]
+            return [(queue_name, job_id, job) for
+                    queue_name, job_id, job in results]
 
     def ack_job(self, *job_ids):
         """
